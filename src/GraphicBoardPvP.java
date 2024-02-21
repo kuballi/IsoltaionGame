@@ -58,6 +58,7 @@ public class GraphicBoardPvP extends AbstractGraphicBoard {
                 }
             }
         }
+
     }
 
     class AL implements ActionListener {
@@ -72,7 +73,6 @@ public class GraphicBoardPvP extends AbstractGraphicBoard {
            MyButton btn = ((MyButton) e.getSource());
            btn.repaint();
            LogicBoard.changeTurn();
-           paintComponent(getGraphics());
 
 
         }
