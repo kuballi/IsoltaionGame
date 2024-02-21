@@ -12,5 +12,5 @@ public AbstractGraphicBoard(){
 }
 public abstract void paintSquares();
 public abstract void paintUnits();
-//public abstract void showPossibleMoves();////
+//public abstract void showPossibleMoves();
 }
