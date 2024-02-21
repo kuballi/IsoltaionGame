@@ -5,7 +5,7 @@ public class LogicBoard implements BoardParametersIE {
     protected short[][] board;
     protected ArrayList<Point> blockArr;
     protected Point[] playersPos; // white is [0], black is [1].
-    public static int turn = 0; // 0 - white, 1 - black
+    public static int turn = 2; // 0 - white, 1 - black, 2- noOne
 
     public LogicBoard() {
 
@@ -43,7 +43,7 @@ public class LogicBoard implements BoardParametersIE {
     }
     public static void changeTurn()
     {
-        LogicBoard.turn |=1;
+        LogicBoard.turn = LogicBoard.turn == 2 ? 0:LogicBoard.turn | 1;
     }
 
     public void makeMove()
