@@ -5,7 +5,7 @@ public class LogicBoard implements BoardParametersIE {
     protected short[][] board;
     protected ArrayList<Point> blockArr;
     protected Point[] playersPos; // white is [0], black is [1].
-    public static boolean turn = true; // ture - white, false - black
+    public static int turn = 0; // 0 - white, 1 - black
 
     public LogicBoard() {
 
@@ -21,6 +21,9 @@ public class LogicBoard implements BoardParametersIE {
         playersPos[1] = new Point(BOARD_SIZE - 1,BOARD_SIZE / 2);
     }
 
+    public boolean isContainsInBlockArr(int x, int y) {
+        return this.blockArr.contains(new Point(x,y));
+    }
     public ArrayList<Point> getBlockArr() {
         return blockArr;
     }
@@ -40,7 +43,7 @@ public class LogicBoard implements BoardParametersIE {
     }
     public static void changeTurn()
     {
-        LogicBoard.turn = !LogicBoard.turn;
+        LogicBoard.turn |=1;
     }
 
     public void makeMove()
@@ -48,3 +51,5 @@ public class LogicBoard implements BoardParametersIE {
 
     }
 }
+
+

@@ -36,23 +36,23 @@ public class GraphicBoardPvP extends AbstractGraphicBoard {
         {
             MyButton btn = this.graphicBoard[ppArr[i].y][ppArr[i].x];
             btn.setType(dataBoard.getTypeByValue(i));
-            btn.setEnabled(LogicBoard.turn);
+            btn.setEnabled(btn.getType().getUnit() == LogicBoard.turn);
         }
 
         for(Point block : bArr ) {
             this.graphicBoard[block.y][block.x].setType(dataBoard.getTypeByValue(2));
-
         }
     }
 
     public void showPossibleMoves() {
-        Point playerPos = LogicBoard.turn ? dataBoard.getPlayersPos()[0] : dataBoard.getPlayersPos()[1];
+        Point playerPos = dataBoard.getPlayersPos()[LogicBoard.turn];
         int r = playerPos.y;
         int c = playerPos.x;
 
+
         for (int i = Math.max(0, r - 1); i <= Math.min(BOARD_SIZE - 1, r + 1); i++) {
             for (int j = Math.max(0, c - 1); j <= Math.min(BOARD_SIZE - 1, c + 1); j++) {
-                if (i != r || j != c) {
+                if (i != r || j != c && !dataBoard.isContainsInBlockArr(i,j) ) {
                     this.graphicBoard[i][j].setBackground(Color.green);
                     this.graphicBoard[i][j].setEnabled(true);
                 }
@@ -70,6 +70,10 @@ public class GraphicBoardPvP extends AbstractGraphicBoard {
         @Override
         public void actionPerformed(ActionEvent e) {
             ((MyButton)e.getSource()).repaint();
+
+
+
+
         }
     }
 }

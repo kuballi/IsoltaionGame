@@ -17,6 +17,10 @@ public class MyButton extends JButton {
         this.type = type;
         loadImage();
     }
+    public typeBtn getType()
+    {
+        return this.type;
+    }
 
     private void loadImage()
     {
