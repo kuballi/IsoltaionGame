@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 public abstract class AbstractGraphicBoard extends JPanel implements  BoardParametersIE{
 protected LogicBoard dataBoard;
 protected MyButton[][] graphicBoard;
+protected Move move;
 public AbstractGraphicBoard(){
     dataBoard = new LogicBoard();
     this.graphicBoard = new MyButton[BOARD_SIZE][BOARD_SIZE];
