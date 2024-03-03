@@ -1,10 +1,6 @@
-
-
-
-import javax.swing.*;
-        import java.awt.*;
-        import java.awt.event.*;
-        import java.util.ArrayList;
+import java.util.ArrayList;
+import java.awt.*;
+import java.awt.event.*;
 
 public class GraphicBoardPvP extends AbstractGraphicBoard {
     public GraphicBoardPvP() {
@@ -36,6 +32,7 @@ public class GraphicBoardPvP extends AbstractGraphicBoard {
                 }
                 this.graphicBoard[i][j].setBackground(new Color(212, 228, 252));
                 this.graphicBoard[i][j].setIcon(null);
+                this.graphicBoard[i][j].setType(typeBtn.empty);
             }
         }
     }
@@ -85,9 +82,16 @@ public class GraphicBoardPvP extends AbstractGraphicBoard {
             if(move == null)
                 move = new Move(this.point,null);
             else
+            {
                 move.setCurrPoint(this.point);
+               graphicBoard[move.getPrevPoint().x][move.getPrevPoint().y].repaint() ;
+
+            }
+
             dataBoard.makeMove(move);
             repaint();
+
+
 
 
         }

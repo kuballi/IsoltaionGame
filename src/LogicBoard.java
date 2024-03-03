@@ -41,9 +41,9 @@ public class LogicBoard implements BoardParametersIE {
                 return typeBtn.block;
         }
     }
-    public static void changeTurn()
+    public static void changeTurn(short turn)
     {
-        LogicBoard.turn = (short) (LogicBoard.turn == 2 ? 0 : LogicBoard.turn | 1);
+        LogicBoard.turn = turn;
     }
     public boolean isValidMove(Point from, Point to) {
         // Check if the destination cell is within the bounds of the board
@@ -61,10 +61,8 @@ public class LogicBoard implements BoardParametersIE {
             for (int j = Math.max(0, c - 1); j <= Math.min(BOARD_SIZE - 1, c + 1); j++) {
                 if(i == to.y && j == to.x)
                     return true; // Move is valid
-
             }
         }
-
 
         return true; // Move is valid
     }
@@ -75,19 +73,17 @@ public class LogicBoard implements BoardParametersIE {
         Point from = move.getPrevPoint();
         if(to == null || from == null)
         {
-            changeTurn();
             return;
         }
 
         if (isValidMove(from,to)) {
             this.board[to.x][to.y] = this.board[from.x][from.y];
             this.board[from.x][from.y] = 0;
-
             // Update player's position
             this.playersPos[this.turn] = to;
 
-            // Change the turn
-            changeTurn();
+            // Change the
+            changeTurn((short)2);
         }
     }
 }

@@ -1,7 +1,5 @@
-import java.awt.Graphics;
-import java.awt.Image;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
+import javax.swing.*;
+import java.awt.*;
 
 public class MyButton extends JButton {
     private typeBtn type;
@@ -24,6 +22,11 @@ public class MyButton extends JButton {
 
     private void loadImage()
     {
+        if(this.type == typeBtn.empty)
+        {
+            pawnImg = null;
+            return;
+        }
         ImageIcon icon = new ImageIcon(getClass().getResource( type.toString() + ".png"));
         pawnImg = icon.getImage();
     }
@@ -40,7 +43,8 @@ enum typeBtn
 {
     pawnWhite(0),
     pawnBlack(1),
-    block(2);
+    block(2),
+    empty(3);
     private  int unit;
     typeBtn(int unit) {
         this.unit = unit;
